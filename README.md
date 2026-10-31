@@ -45,7 +45,10 @@ armazenado é republicado.
 
 ## Banco de dados (migrations)
 
-O banco **não** é criado automaticamente. Script SQL idempotente pronto em [`db/init.sql`](db/init.sql):
+Ao rodar a stack completa com o `docker-compose.yml` do repositório
+[`fcg-orchestration`](https://github.com/R-A-Medeiros/fcg-orchestration), o banco e as tabelas são
+criados automaticamente na primeira subida do Postgres. Rodando o serviço isoladamente, o banco
+**não** é criado automaticamente. Script SQL idempotente pronto em [`db/init.sql`](db/init.sql):
 
 ```bash
 psql -h localhost -U postgres -c "CREATE DATABASE fcg_payments;"
@@ -60,7 +63,8 @@ Ou, com o EF Core: `dotnet ef database update --project src/PaymentsAPI`.
 dotnet run --project src/PaymentsAPI
 ```
 
-Requer PostgreSQL e RabbitMQ acessíveis (veja o `docker-compose.yml` na raiz).
+Requer PostgreSQL e RabbitMQ acessíveis (veja o `docker-compose.yml` do repositório
+[`fcg-orchestration`](https://github.com/R-A-Medeiros/fcg-orchestration)).
 
 ## Docker
 
